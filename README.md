@@ -2,6 +2,13 @@
 
 A lightweight DNS server with ad-blocking capabilities running on ESP32 Rpi Pico W microcontrollers using MicroPython. Block unwanted domains at the network level with a simple web interface for management.
 
+## Demo
+
+https://github.com/user-attachments/assets/62f50f44-8ce9-4009-a922-144ffd0b452a
+
+
+
+
 ## Features
 
 - **DNS Server**: Custom DNS server with domain blocking capabilities
