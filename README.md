@@ -4,7 +4,8 @@ A lightweight DNS server with ad-blocking capabilities running on ESP32 Rpi Pico
 
 ## Demo
 
-https://github.com/user-attachments/assets/62f50f44-8ce9-4009-a922-144ffd0b452a
+
+https://github.com/user-attachments/assets/a5138d31-7e0a-46c9-b9a8-e8991a3d083b
 
 
 
