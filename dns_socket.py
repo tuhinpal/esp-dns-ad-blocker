@@ -14,9 +14,11 @@ class DNSSocket:
         self.cleanup_interval = 60  # Cleanup every 60 seconds
     
     def get_socket(self):
+        """Return the socket"""
         return self.sock
     
     def parse_domain(self, data):
+        """Parse domain from DNS query"""
         i = 12
         parts = []
         while i < len(data) and data[i] != 0:
@@ -29,6 +31,7 @@ class DNSSocket:
         return ".".join(parts)
     
     def blocked_response(self, query):
+        """Return DNS blocked response"""
         tid = query[:2]
         flags = b"\x81\x80"
         counts = b"\x00\x01\x00\x01\x00\x00\x00\x00"
@@ -106,6 +109,7 @@ class DNSSocket:
             self.cleanup_cache()
     
     def handle_request(self):
+        """Handle DNS request"""
         try:
             data, addr = self.sock.recvfrom(512)
             domain = self.parse_domain(data)

@@ -9,6 +9,7 @@ class WiFiManager:
         self.ip = None
     
     def connect(self):
+        """Connect to WiFi"""
         self.wlan.active(True)
         self.wlan.connect(self.ssid, self.password)
         
@@ -21,8 +22,10 @@ class WiFiManager:
         return self.ip
     
     def get_ip(self):
+        """Return the IP address"""
         return self.ip
     
     def is_connected(self):
+        """Return if the WiFi is connected"""
         return self.wlan.isconnected()
 

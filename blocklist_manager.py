@@ -67,15 +67,3 @@ class BlocklistManager:
         self.save()
         print("Blocklist cleared")
     
-    def import_list(self, domains):
-        """Import multiple domains at once"""
-        added = 0
-        for domain in domains:
-            domain = domain.strip().lower()
-            if domain and not domain.startswith('#'):
-                self.blocklist.add(domain)
-                added += 1
-        self.save()
-        print(f"Imported {added} domains to blocklist")
-        return added
-

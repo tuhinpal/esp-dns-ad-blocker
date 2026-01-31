@@ -12,9 +12,11 @@ class WebSocket:
         self.sock.setblocking(False)
     
     def get_socket(self):
+        """Return the socket"""
         return self.sock
     
     def handle_request(self):
+        """Handle HTTP request by parsing the request and routing it to the appropriate handler"""
         try:
             conn, addr = self.sock.accept()
             conn.setblocking(True)
@@ -44,6 +46,7 @@ class WebSocket:
             pass  # No connection available
     
     def route_request(self, method, path, full_request):
+        """Route the request to the appropriate handler"""
         if path == "/" or path == "/index.html" or path == "/blocklist":
             return self.blocklist_page()
         elif path.startswith("/add?domain="):
@@ -58,6 +61,7 @@ class WebSocket:
             return self.not_found()
         
     def blocklist_page(self):
+        """Return the blocklist page"""
         blocked_domains = self.blocklist_manager.get_all()
         domain_list = "".join([f"<li>{d} <a href='/remove?domain={d}'>Remove</a></li>" 
                                for d in blocked_domains])
@@ -77,16 +81,20 @@ class WebSocket:
         return self.http_response(body)
     
     def not_found(self):
+        """Return the 404 not found page"""
         body = "<html><body><h1>404 Not Found</h1></body></html>"
         return "HTTP/1.1 404 Not Found\r\n" + self.headers(body) + body
     
     def redirect_response(self, location):
+        """Return the redirect response"""
         return f"HTTP/1.1 302 Found\r\nLocation: {location}\r\n\r\n"
     
     def http_response(self, body):
+        """Return the HTTP response"""
         return "HTTP/1.1 200 OK\r\n" + self.headers(body) + body
     
     def headers(self, body):
+        """Return the headers"""
         return (
             "Content-Type: text/html\r\n"
             f"Content-Length: {len(body)}\r\n"
